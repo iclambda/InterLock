@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.htl.interlock" >
+
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--
+ To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" /> <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Views.VideoActivity"
+            android:label="@string/title_activity_video" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".Service.WarningService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <provider
+            android:name=".Model.SettingsContentProvider"
+            android:authorities="com.htl.providers.settingsprovider"
+            android:enabled="true"
+            android:exported="true" >
+        </provider>
+
+        <service
+            android:name=".Service.FileTransferService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
+
+        <activity
+            android:name=".Views.FileViewer"
+            android:label="@string/title_activity_file_viewer" >
+        </activity>
+        <activity
+            android:name=".Views.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
+        <activity
+            android:name=".Views.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name=".Views.SettingWifiActivity"
+            android:label="@string/title_activity_setting_wifi" >
+        </activity>
+        <activity
+            android:name=".Views.FileViewActivity"
+            android:label="@string/title_activity_file_view" >
+        </activity>
+        <activity android:name=".Views.MyDaydreamServiceSettingsActivity" /> <!-- This service is only used on devices with API v17+ -->
+        <service
+            android:name=".Views.MyDaydreamService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.service.dreams.DreamService" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+            <!-- Point to additional information for this dream -->
+            <meta-data
+                android:name="android.service.dream"
+                android:resource="@xml/my_daydream_info" />
+        </service>
+    </application>
+
+</manifest>

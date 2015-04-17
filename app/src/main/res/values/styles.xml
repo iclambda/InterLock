@@ -1,0 +1,10 @@
+<resources>
+
+    <!-- Theme.AppCompat.Light.DarkActionBar -->
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:imageButtonStyle">?android:borderlessButtonStyle</item>
+        <!-- Default style for Buttons -->
+        <item name="android:buttonStyle">?android:borderlessButtonStyle</item>
+        <!-- Customize your theme here. -->
+    </style>
+</resources>
